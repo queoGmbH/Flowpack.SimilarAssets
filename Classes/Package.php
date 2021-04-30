@@ -13,9 +13,7 @@ namespace Flowpack\SimilarAssets;
  * source code.
  */
 
-use Flowpack\Neos\AssetUsage\Service\AssetIntegrationService;
-use Neos\ContentRepository\Domain\Model\Node;
-use Neos\ContentRepository\Domain\Model\Workspace;
+use Flowpack\SimilarAssets\Service\ImageHashService;
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Package\Package as BasePackage;
 use Neos\Media\Domain\Service\AssetService;
@@ -27,8 +25,8 @@ class Package extends BasePackage
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
 
-        $dispatcher->connect(AssetService::class, 'assetRemoved', AssetIntegrationService::class, 'removeHashForAsset');
-        $dispatcher->connect(AssetService::class, 'assetCreated', AssetIntegrationService::class, 'generateHashForAsset');
-        $dispatcher->connect(AssetService::class, 'assetResourceReplaced', AssetIntegrationService::class, 'generateHashForAsset');
+        $dispatcher->connect(AssetService::class, 'assetRemoved', ImageHashService::class, 'removeHashForAsset');
+        $dispatcher->connect(AssetService::class, 'assetCreated', ImageHashService::class, 'generateHashForAsset');
+        $dispatcher->connect(AssetService::class, 'assetResourceReplaced', ImageHashService::class, 'generateHashForAsset');
     }
 }
