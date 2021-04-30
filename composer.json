@@ -1,0 +1,23 @@
+{
+    "name": "flowpack/similar-assets",
+    "description": "Provides strategies to find similar assets in the Neos Media UI",
+    "license": "GPL-3.0-or-later",
+    "type": "neos-package",
+    "require": {
+        "neos/media": "^5.2 || ^7.0 || dev-master",
+        "jenssegers/imagehash": "^0.7.0"
+    },
+    "suggest": {
+        "flowpack/media-ui": "Will provide a similar asset strategy for the Neos Media Ui"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flowpack\\SimilarAssets\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Flowpack.SimilarAssets"
+        }
+    }
+}
