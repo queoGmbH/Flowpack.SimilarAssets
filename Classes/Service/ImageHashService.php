@@ -78,7 +78,7 @@ class ImageHashService
     public function removeHashForAsset(AssetInterface $asset): void
     {
         if ($asset instanceof Image) {
-            $this->removeHashForAsset($asset);
+            $this->removeHashForImage($asset);
         }
     }
 

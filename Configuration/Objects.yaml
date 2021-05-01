@@ -1,0 +1,6 @@
+Flowpack\SimilarAssets\Domain\Strategy\SimilarImagesStrategy:
+  arguments:
+    1:
+      object: 'Flowpack\SimilarAssets\Domain\Repository\ImageHashRepository'
+    2:
+      object: 'Neos\Media\Domain\Repository\ImageRepository'

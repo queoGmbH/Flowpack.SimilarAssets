@@ -19,6 +19,7 @@ use Neos\Media\Domain\Model\AssetInterface;
 use Neos\Media\Domain\Model\Image;
 use Neos\Media\Domain\Repository\ImageRepository;
 
+/** @noinspection ClassConstantCanBeUsedInspection */
 if (interface_exists('Flowpack\Media\Ui\Domain\Strategy\AssetSimilarityStrategyInterface', false)) {
     /**
      * This strategy provides similar assets for the Neos Media Ui
@@ -29,16 +30,20 @@ if (interface_exists('Flowpack\Media\Ui\Domain\Strategy\AssetSimilarityStrategyI
     {
 
         /**
-         * @Flow\Inject
          * @var ImageHashRepository
          */
         protected $imageHashRepository;
 
         /**
-         * @Flow\Inject
          * @var ImageRepository
          */
         protected $imageRepository;
+
+        public function __construct(ImageHashRepository $imageHashRepository, ImageRepository $imageRepository)
+        {
+            $this->imageHashRepository = $imageHashRepository;
+            $this->imageRepository = $imageRepository;
+        }
 
         public function hasSimilarAssets(AssetInterface $asset): bool
         {
@@ -67,5 +72,10 @@ if (interface_exists('Flowpack\Media\Ui\Domain\Strategy\AssetSimilarityStrategyI
         }
     }
 } else {
-    final class SimilarImagesStrategy {}
+    final class SimilarImagesStrategy
+    {
+        public function __construct(ImageHashRepository $imageHashRepository, ImageRepository $imageRepository)
+        {
+        }
+    }
 }
