@@ -4,8 +4,8 @@
     "license": "GPL-3.0-or-later",
     "type": "neos-package",
     "require": {
-        "neos/media": "^5.2 || ^7.0 || dev-master",
-        "jenssegers/imagehash": "^0.7.0"
+        "neos/media": "^5.3 || ^7.3 || ^8.1 || dev-master",
+        "jenssegers/imagehash": "^0.7 || ^0.8"
     },
     "suggest": {
         "flowpack/media-ui": "Will provide a similar asset strategy for the Neos Media Ui"
