@@ -12,7 +12,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\QueryResultInterface;
 use Neos\Media\Domain\Model\AssetInterface;
 use Neos\Media\Domain\Model\Image;
-use phpseclib\Math\BigInteger;
+use phpseclib3\Math\BigInteger;
 
 /**
  * @Flow\Scope("singleton")

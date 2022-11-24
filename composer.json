@@ -5,7 +5,7 @@
     "type": "neos-package",
     "require": {
         "neos/media": "^5.3 || ^7.3 || ^8.1 || dev-master",
-        "jenssegers/imagehash": "^0.7 || ^0.8"
+        "jenssegers/imagehash": "^0.8"
     },
     "suggest": {
         "flowpack/media-ui": "Will provide a similar asset strategy for the Neos Media Ui"
