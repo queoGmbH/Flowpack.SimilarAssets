@@ -48,8 +48,12 @@ class ImageHashService
         return null;
     }
 
-    public function generateHashForImage(Image $image): string
+    public function generateHashForImage(Image $image): ?string
     {
+        if ($this->isSvg($image)) {
+            return null;
+        }
+
         $hash = $this->generateHash($image->getResource()->getStream());
 
         /** @var ImageHash $existingHash */
@@ -84,6 +88,10 @@ class ImageHashService
 
     public function removeHashForImage(Image $image): void
     {
+        if ($this->isSvg($image)) {
+            return;
+        }
+
         /** @var ImageHash $existingHash */
         $existingHash = $this->imageHashRepository->findOneByImageId($image->getIdentifier());
         if ($existingHash) {
@@ -110,5 +118,10 @@ class ImageHashService
         $hexHashA = (new BigInteger($a, 10))->toHex();
         $hexHashB = (new BigInteger($b, 10))->toHex();
         return $this->hasher->distance(Hash::fromHex($hexHashA), Hash::fromHex($hexHashB));
+    }
+
+    protected function isSvg(Image $image): bool
+    {
+        return $image->getMediaType() === 'image/svg+xml';
     }
 }
